@@ -1,8 +1,10 @@
-const express = require('express');
+import express from 'express';
+import pat from 'path';
+import posts from './routes/posts'
 const port = process.env.PORT  || 3000;
 const app = express();
-const path = require('path')
-const post = require('./routes/posts')
+
+
 
 
 
@@ -20,7 +22,8 @@ const post = require('./routes/posts')
     
 // })
 
-
+// Routes
+app.use('/api/posts', posts)
 
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))

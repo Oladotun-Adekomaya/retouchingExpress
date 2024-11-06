@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express'
 const router = express.Router;
 
 let posts = [
@@ -8,7 +8,7 @@ let posts = [
 ]
 
 // Get all posts
-router.get('/api/posts/', (req,res) =>{
+router.get('/', (req,res) =>{
     const limit = parseInt(req.query.limit)
     if (!isNaN(limit) && limit > 0) {
         return res.status(200).json(posts.slice(0,limit))
@@ -21,7 +21,7 @@ router.get('/api/posts/', (req,res) =>{
 
 
 // Get posts by id
-router.get('/api/posts/:id', (req,res) =>{
+router.get('/:id', (req,res) =>{
     const id = parseInt(req.params.id)
     const post = posts.find((post) => {
       return post.id === id
