@@ -1,5 +1,5 @@
 import express from 'express'
-const router = express.Router;
+const router = express.Router();
 
 let posts = [
     {id: 1, title: 'Post One'},
@@ -36,5 +36,15 @@ router.get('/:id', (req,res) =>{
     
     
 })
+
+// Create new post
+router.post('/',(req,res) =>{
+    console.log(req.body);
+    const newPost = req.body;
+    posts.push(newPost);
+
+    res.status(201).json(posts);
+    
+});
 
 export default router;

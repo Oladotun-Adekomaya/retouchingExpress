@@ -1,11 +1,22 @@
 import express from 'express';
-import pat from 'path';
-import posts from './routes/posts'
+import path from 'path';
+import posts from './routes/posts.js';
 const port = process.env.PORT  || 3000;
 const app = express();
 
 
+// Body parser middleware
+app.use(express.json()) // takes care of being able to submit raw json
+app.use(express.urlencoded({ extended: false})) // takes cares of sending form data
 
+
+
+
+// Routes
+app.use('/api/posts', posts)
+
+
+app.listen(port, () => console.log(`Server is running on port ${port}`))
 
 
 
@@ -22,8 +33,3 @@ const app = express();
     
 // })
 
-// Routes
-app.use('/api/posts', posts)
-
-
-app.listen(port, () => console.log(`Server is running on port ${port}`))
