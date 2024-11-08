@@ -9,6 +9,10 @@ import notFound from './middleware/notFound.js'
 const port = process.env.PORT  || 3000;
 const app = express();
 
+// Configure ejs
+app.set('view engine', 'ejs')
+app.set('views', 'views')
+
 
 // Get the directory name
 const __filename = fileURLToPath(import.meta.url);
@@ -29,6 +33,11 @@ app.use(logger)
 app.use(express.static(path.join(__dirname, 'public'))) // doesn't work for esmodule
 
 // Routes
+app.get('/ejs',(req,res,next) =>{
+    res.render('index')
+    next()
+})
+
 app.use('/api/posts', posts)
 
 // Error Handler 
