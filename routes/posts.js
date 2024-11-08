@@ -9,15 +9,15 @@ router.get('/', getPosts)
 
 
 // Get posts by id
-router.get('/:id', )
+router.get('/:id', getPost)
 
 // Create new post
-router.post('/',);
+router.post('/',createPost);
 
 // Update Post
-router.put('/:id', )
+router.put('/:id', updatePost )
 
 // Delete Post
-router.delete('/:id', ) 
+router.delete('/:id', deletePost) 
 
 export default router;
