@@ -8,8 +8,12 @@ const logger = (req,res,next) =>{
         DELETE: 'red',
     }
 
-    const color = methodColors[req.method] || 'white'
-    console.log(`${req.method} ${req.protocol}://${req.get('host')}${req.originalUrl}`)[color]
+    let colorString = methodColors[req.method] || 'white'
+
+    console.log(colorString);
+    
+    console.log(`${req.method} ${req.protocol}://${req.get('host')}${req.originalUrl}`)
+    // console.log(colors.colorString(`${req.method} ${req.protocol}://${req.get('host')}${req.originalUrl}`))
     next();
 };
 
