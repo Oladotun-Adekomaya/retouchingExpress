@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public'))) // doesn't work for esmo
 
 // Routes
 app.get('/ejs',(req,res,next) =>{
-    res.render('index')
+    res.render('index', {title: 'Alaye', message: 'Hello from EJS', people: ['ola', 'koma', 'tima']})
     next()
 })
 
