@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import posts from './routes/posts.js';
 import logger from './middleware/logger.js'
 import errorHandler from './middleware/error.js'
@@ -9,6 +10,13 @@ const port = process.env.PORT  || 3000;
 const app = express();
 
 
+// Get the directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
+
+
 // Body parser middleware
 app.use(express.json()) // takes care of being able to submit raw json
 app.use(express.urlencoded({ extended: false})) // takes cares of sending form data
@@ -16,6 +24,9 @@ app.use(express.urlencoded({ extended: false})) // takes cares of sending form d
 //Logger middleware
 app.use(logger)
 
+
+// setup static folder
+app.use(express.static(path.join(__dirname, 'public'))) // doesn't work for esmodule
 
 // Routes
 app.use('/api/posts', posts)
